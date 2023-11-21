@@ -1,0 +1,71 @@
+﻿@model List<ManagementWebApp.Models.dashboardModels>
+@{
+    ViewBag.Title = "AdminDashboardPage";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+<style>
+
+
+    .reportdiv {
+        width: 24%;
+        background-color: aqua;
+        height: 20vh;
+        margin-top: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 1px 1px 5px 1px rgb(191, 191, 191);
+    }
+        .reportdiv:hover{
+            transform:scale(1.04);
+        }
+
+        #noOfUserDiv {
+            background-color: #4eec59;
+        }
+
+    #noOfBookingsDiv {
+        background-color: #f98440;
+    }
+
+    #noOfMoviesDiv {
+        background-color: #ff5353;
+    }
+
+    #noOfTheatersDiv {
+        background-color: #5792f9;
+    }
+
+    .dashboardcard-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .reportdiv h3{
+        font-size:17px;
+        margin-top:10%;
+    }
+    p{
+        font-size:16px;
+        font-weight:600;
+        color:black;
+    }
+</style>
+
+
+
+    <div class="dashboardcard-container">
+
+        @foreach (var item in Model)
+        {
+            <div id="noOfTheatersDiv" class="reportdiv"><h3>Number Of Bookings</h3><br /><p>@item.x</p></div>
+            <div id="noOfBookingsDiv" class="reportdiv"><h3>Number Of Users</h3><br /><p>@item.a</p> </div>
+            <div id="noOfUserDiv" class="reportdiv"><h3>Number Of Events</h3><br /><p>@item.y</p></div>
+            <div id="noOfMoviesD" class="reportdiv"><h3>Number Of Properties</h3><br /><p>@item.z</p></div>
+        }
+
+    </div>
+
+
+
+
