@@ -1,0 +1,491 @@
+*{ margin: 0; padding: 0;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+}
+ul, li,div{margin: 0; padding: 0;}
+
+
+header li{
+    display: inline;
+    padding: 1%;
+
+}
+header a:hover::before{
+  
+ content: '';
+ height: 2px;
+ width:40px;
+ position:absolute;
+ background-image: linear-gradient(to right,rgb(62, 62, 229),white);
+
+    top:70%;
+
+
+}
+header a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 12PX;
+    margin-top: 1%;
+}
+header{
+    background-color: rgb(62, 62, 229);
+}
+
+.headermenu{
+    text-align: center;
+    margin-top: 2%;
+}
+.logo{
+    text-align: left;
+}
+.logo h1{
+    margin-left: 35%;
+}
+.headerbutton{
+    margin-top: 4%;
+    border: 0;
+    text-align: right;
+}
+.headerbutton{
+    margin-right: 10%;
+}
+.logo h1{
+  color: white;
+}
+.headerbutton button{
+    width: 150px;
+    font-weight: bolder;
+    border: 0;
+    color: blue;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    height: 30px;
+    background-color: white;
+}
+.servicesdiv{
+    text-align: center;
+
+}
+.servicesdiv h2{
+   font-size: 40px;
+   font-weight: 600;
+   margin-bottom: 2%;
+
+}
+.servicesdiv p{ 
+    font-size: 12px;
+    font-weight: 600;
+    color: darkgray;
+    margin-bottom: 4%;
+
+}
+.card1{
+ 
+   width: 100%;
+    background-color: white;
+    border-radius: 6px;
+   padding: 30px;
+}
+
+.servicedivcontainer{
+    padding-top: 10%;
+}
+.servicecard{
+    padding-bottom: 50px;
+}
+.servicecard a{
+    text-decoration: none;
+    font-size: 14px;
+    font-weight:600 ;
+}
+.divheader{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.icon{
+    font-size: 50px;
+    color: blue;
+    z-index: 9;
+}
+.divheader::before{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    width: 50px;
+    height: 50px;
+    left: 70%;
+    
+}
+.servicecard p{
+    font-size: 12px;
+    font-weight: 600;
+
+}
+
+.servicesdiv p{
+    font-size: 12px;
+    color: darkgray;
+}
+.banner{
+    position: relative;
+    background-color: rgb(62, 62, 229);
+    color: white;
+}
+.firstcarsl{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+.carslin1{
+    width: 50%;
+    justify-content: center;
+   
+
+}
+.carslin2{
+    width: 50%;
+    
+
+ 
+}
+.slidertext h1{
+   font-size: 60px;
+   font-weight: bolder;
+    
+
+ 
+}
+.slidertext p{
+   font-size: 12px;
+  
+    
+
+ 
+}
+.slidertext{
+    position: absolute;
+    top: 22%;
+    left: 15%;
+}
+.sliderimg1{
+    width: 100%;
+}
+.sliderbutton button{
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: rgb(62, 62, 229); 
+    border: 1px solid white;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+.sliderbutton button:hover{
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: white; 
+    border: 1px solid white;
+    color: rgb(62, 62, 229);
+    font-size: 12px;
+    font-weight: 600;
+}
+.subcont2{
+    display: flex;
+    flex-direction: row;
+}
+
+.featureh2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 2%;
+ 
+ }
+ .featurep{ 
+     font-size: 12px;
+     font-weight: 600;
+     color: darkgray;
+     margin-bottom: 4%;
+ 
+ }
+ .buttoncontainer2{
+    
+    width: 100%;
+ }
+
+.buttoncontainer2 button{
+    
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-image: linear-gradient(white,white);
+    color: black;
+    font-size: 13px;
+    font-weight: 600;
+    width: 100%;
+}
+.buttoncontainer2 button:hover{
+   
+    border: none;
+    background-image: linear-gradient(to right,rgb(62, 62, 229),cyan);
+    color: white;
+    width: 100%;
+    
+}
+
+
+.imgcontainer img{
+    width: 33%;
+    float: left;
+}
+
+.pricingheading h2{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 2%;
+ 
+ }
+ .pricingheading p{ 
+     font-size: 12px;
+     font-weight: 600;
+     color: darkgray;
+     margin-bottom: 4%;
+ 
+ }
+.cardcontainer .card{
+    padding: 1% 4% 2% 4%;
+    background-image: linear-gradient(cyan,rgb(62, 62, 229));
+    color: white;
+    border: none;
+    box-shadow: 0px 1px 10px 0px grey;
+}
+.card span{
+    font-size:20px ;
+    font-weight: 500;
+}
+.card button{
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    color:rgb(62, 62, 229) ;
+  height: 30px;
+    font-weight: 600;
+}
+.aboutdiv{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.aboutimgcont{
+    margin-top: 10%;
+}
+.aboutimgcont img{
+width: 90%;
+margin-top: 10%;
+}
+.questionscont{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 35%;
+}
+h5{
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(62, 62, 229);
+}
+
+.testimonialheader{
+    margin-top: 15%;
+}
+.testimonialheader p{
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5%;
+}
+
+.aboutdiv button{
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    text-align: left ;
+    margin-bottom: 3%;
+    background-color: white;
+}
+.reviewdiv{
+    display:flex;
+    flex-direction: row;
+   
+}
+
+.reviewcard{
+margin-top: 25%;
+margin-left: 25%;
+width:80%;
+position: relative;
+z-index: 1;
+background-color: white;
+border-radius: 25px;
+padding: 3%;
+box-shadow: 1px 1px 10px 0px lightgray;
+}
+.behind{
+   
+    position: absolute;
+    height: 70%;
+    padding: 3%;
+    width: 80%;
+    top:25% ;
+    left: 20%;
+    border-radius: 25px;
+    background-image: linear-gradient(rgb(238, 238, 245),rgb(243, 244, 249));
+    
+}
+
+.cardcoment p{
+    font-size: 17px;
+    font-weight: 500;
+}
+.cardcoment{
+    border-bottom: 1px solid lightgray;
+background-color: white;
+}
+.clientname h5{
+    color: black;
+    font-size: 15px;
+    margin: 10px 0px 0px 0px ;
+    background-color: white;
+}
+.clientname p{
+font-size: 12px;
+color: darkgray;
+margin: 10px 0px 0px 0px ;
+}
+.reviews p{
+font-size: 12px;
+margin-bottom: 5px 0px 0px 0px;
+}
+.teamcarddiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.card4{
+
+  height: 70%;
+  padding: 0%;
+  box-shadow: 0px 1px 4px 1px lightgray;
+
+}
+.cardimgdiv{
+    width: 100%;
+}
+.cardimgdiv img{
+width: 100%;
+height:60%;
+
+}
+.contacthead p{
+    font-size: 12px;
+    font-weight: 600;
+    color: gray;
+
+}
+.contactlidiv{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+}
+.col-md-4{
+    display: flex;
+    flex-direction: row;
+}
+.contactlidiv li{
+    list-style-type: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+.iconcont p{
+    font-size: 40px;
+   border-radius: 50%;
+   
+}
+.contactform{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+   padding-top: 10% ;
+
+}
+.formin1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2% 0% 2% 0% ;
+}
+.formin2{
+    width: 100%;
+}
+.formin3 button{
+    width:150px;
+    height: 35px;
+    background-color: rgb(62, 62, 229);
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    margin: 2% 0% 2% 0%;
+    border-radius: 5px;
+    border: none;
+}
+input{
+    width: 100%;
+}
+label{
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: gray;
+}
+footer{
+    color: white;
+}
+.iconcont{
+    width :40px;
+    text-align: center;
+    border-radius: 50%;
+}
+.iconcont p{
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    margin: 1% 0% 0% 0%;
+   margin-top: 10px;
+}
+footer div{
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-40%,-50%);
+} 
+.footerdiv li{
+    list-style-type: none;
+    color: white;
+    display: inline;
+    padding: 1%;
+    font-size: 20px;
+
+}

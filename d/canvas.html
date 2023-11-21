@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .editorcontainer{
+            width:100%;
+            height:100vh;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+        }
+        textarea{
+            resize: none;
+            border-radius: 10px;
+            border:none;
+            outline: none;
+            background-color: whitesmoke;
+        }
+        .editordiv{
+            width:80%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 1px 1px 5px  rgb(116, 116, 116);
+            
+        }
+        .userdata{
+            width:10%;
+            border-radius: 10px;
+            background-color: rgb(71, 190, 254);
+            box-shadow: 1px 1px 5px  rgb(116, 116, 116);
+        }
+        .navdiv{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <navbar>
+            <div class="navdiv">
+                <h4>Welcome</h4>
+                <button>Logout</button>
+            </div>
+        </navbar>
+        <div class="editorcontainer">
+            <div class="editordiv">
+                <textarea name="" id="" cols="" rows="" style="width:100%; height: 100%;" ></textarea>
+            </div>
+            <div class="userdata">
+                USer
+            </div>
+        </div>
+    </div>
+</body>
+</html>

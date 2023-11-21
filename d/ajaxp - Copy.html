@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Country and State Dropdowns with AJAX</title>
+    <style>
+      select {
+        width: 200px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="country-select">Select country:</label>
+      <select id="country-select"></select>
+    </div>
+
+    <div>
+      <label for="state-select">Select state:</label>
+      <select id="state-select"></select>
+    </div>
+    <div class="appender">
+        <button>click</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "http://devdesigntex.thbred.store/test-1111111/",
+          method: "POST",
+          data: {
+            request_type: "getcountry",
+          },
+          success: function (data) {
+            const countries = JSON.parse(data);
+
+            console.log(data)
+            const allcomntrys = countries.countries;
+            console.log(allcomntrys)
+            const countrySelect = $("#country-select");
+            countrySelect.append($("<option>").val("Select Country"));
+            $.each(allcomntrys, function (index, country) {
+                console.log(country)
+              countrySelect.append($("<option>", { value: country.id, text: country.name,})
+                
+              );
+              
+            });
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+
+        $("#country-select").on("change", function () {
+          const selectedCountry = $(this).val();
+          console.log(selectedCountry)
+          $("#state-select").empty();
+
+          $.ajax({
+            url: "http://devdesigntex.thbred.store/test-1111111/",
+            method: "POST",
+            data: {
+              request_type: "getstates",
+              country_code: selectedCountry,
+            },
+            
+
+            success: function (data) {
+              const states = JSON.parse(data);
+              const allstates = states.states;
+              console.log(data)
+              const stateSelect = $("#state-select");
+              stateSelect.append(
+                $("<option>", {
+                  value: "",
+                  text: "Select state",
+                })
+              );
+              $.each(allstates, function (index, state) {
+                stateSelect.append(
+                  $("<option>", {
+                    value: state.id,
+                    text: state.name,
+                  })
+                );
+              });
+            },
+            error: function (error) {
+              console.log(error);
+            },
+          });
+          
+
+          $("#state-select").change( function () {
+          
+          selectedstate = $(this).val();
+          $("button").click(function(){
+
+                  $(".appender").append("<h3> selected state: "+selectedstate+" "+"selected country "+selectedCountry)
+            })
+          })
+          
+       
+        });
+       
+   
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <input type="number" id="inp1">
+        <button id="btn">Show</button>
+        <p>val</p>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            valu1=$("#inp1").val();
+            console.log(valu1)
+            var arr=[];
+            for(i=0;i<valu1;i++){
+                arr[i]=[]
+                var k=0;
+                for(j=0;j<valu1;j++){
+                    if(i==j){
+                        arr[i][j]=1
+                        k++;
+                    }
+                    else{
+                        arr[i][j]=0;
+                    }
+                }
+            }
+            for(i=0;i<valu1;i++){
+                for(j=0;j<valu1;j++){
+                    document.write(arr[i][j])
+                }
+                document.write("<br>");
+            }
+            
+            
+        })
+    })
+</script>
+</html>

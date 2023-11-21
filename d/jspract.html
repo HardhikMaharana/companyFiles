@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Hello </h2>
+        <h3>World</h3>
+        <h1>Hardhik</h1>
+        <button id="cl">Click.</button>
+        <button id="ad">Add</button>
+    </div>
+
+
+
+    <script>
+            var clickbtn=document.getElementById("cl")
+            clickbtn.addEventListener("click",()=>{
+                var h2s=document.getElementsByTagName("h2");
+            var h3s=document.getElementsByTagName("h3");
+            var h1s=document.getElementsByTagName("h1");
+            console.log(h2s.length,h3s.length,h1s.length)
+            })
+            i=1;
+            var addbtn=document.getElementById("ad"); 
+            addbtn.addEventListener("click",()=>{
+                var d=document.createElement("div");
+                d.innerHTML=i;
+                document.body.appendChild(d);
+                i++
+            })
+            
+
+        
+        
+    </script>
+</body>
+</html>

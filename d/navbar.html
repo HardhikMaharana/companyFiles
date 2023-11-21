@@ -1,0 +1,88 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav div{
+            width:100%;
+            display: flex;
+            flex-direction: row;
+        }
+        nav div button{
+            width: 25%;
+            height: 40px;
+        }
+        .drop{
+            width: 20%;
+            position: absolute;
+            visibility: hidden;
+        }
+        #d1{
+            left: 50%;
+            
+        }
+        #d2{
+            left: 70%;
+        }
+        #d3{
+            left: 90%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <button>Click1</button>
+            <button>Click2</button>
+            <button id="click1">Click3</button>
+            <button>Click4</button>
+        </div>
+    </nav>
+
+    <div id="d1" class="drop">
+        <div style="display: flex;flex-direction: column;">
+            <button>Click1</button>
+            <button>Click2</button>
+            <button id="click2">Click3</button>
+            <button>Click4</button>
+        </div>
+    </div>
+
+    <div id="d2" class="drop">
+        <div style="display: flex;flex-direction: column;">
+            <button>Click1</button>
+            <button>Click2</button>
+            <button id="click3">Click3</button>
+            <button>Click4</button>
+        </div>
+    </div>
+    <div id="d3" class="drop">
+        <div style="display: flex;flex-direction: column;">
+            <button>Click1</button>
+            <button>Click2</button>
+            <button id="click4">Click3</button>
+            <button>Click4</button>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("click1").addEventListener("mouseenter",()=>{
+        document.getElementById("d1").style.visibility="visible";
+        document.getElementById("click2").addEventListener("mouseenter",()=>{
+            document.getElementById("d2").style.visibility="visible";
+            document.getElementById("click3").addEventListener("mouseenter",()=>{
+                document.getElementById("d3").style.visibility="visible";
+            })
+        })
+    })
+    window.onclick(()=>{
+        document.getElementById("d1").style.visibility="hidden";
+        document.getElementById("d2").style.display="none";
+        document.getElementById("d3").style.display="none";
+    })
+</script>
+</html>

@@ -1,0 +1,192 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="date" id="dt">
+        <input type="time" id="ti">
+        <button>Submit</button>
+    </div>
+    <div class="timer" style="display: none;">
+        <label for="">DAYS</label><input type="text" id="day" disabled>
+        <label for="">HOURS</label><input type="text" name="" id="hour" disabled>
+        <label for="">MINUTES</label><input type="text" name="" id="minute" disabled>
+        <label for="">SECONDS</label><input type="text" name="" id="sec" disabled>
+    </div>
+    <div class="demo"></div>
+</body>
+<script>
+
+    $(document).ready(function () {
+        $("button").click(function () {
+
+            $(".timer").css("display", "block");
+
+
+            var inpdate = $('#dt').val()
+            console.log(inpdate)
+            var datearr = inpdate.split("-");
+            console.log(datearr)
+            var curdate = new Date();
+            console.log(curdate)
+            var inptime = $("#ti").val()
+
+
+
+            timearr = inptime.split(":");
+            console.log(timearr)
+            var inpdateinsec = Date.parse(inpdate);
+            var timeSplit = inptime.split(':'),
+                hours,
+                minutes,
+                meridian;
+            hours = timeSplit[0];
+            minutes = parseInt(timeSplit[1]);
+            if (hours > 12) {
+                meridian = 'PM';
+                hours -= 12;
+                var inphoursInMs = (((parseInt(timearr[0])) * 3600000) + (parseInt(timearr[1]) * 60000));
+                console.log("inphrsinsec " + (parseInt(timearr[0]) + 12) * 3600000 + "min " + (parseInt(timearr[1]) * 60000))
+                console.log("inputhours" + inphoursInMs)
+
+            } else if (hours < 12) {
+                meridian = 'AM';
+                var inphoursInMs = ((parseInt(timearr[0]) * 3600000) + (parseInt(timearr[1]) * 60000));
+                if (hours == 0) {
+                    hours = 12;
+                    var inphoursInMs = ((parseInt(timearr[0]) * 3600000) + (parseInt(timearr[1]) * 60000));
+                }
+            } else {
+                meridian = 'PM';
+            }
+            var daysleft = datearr[2] - curdate.getDate();
+            console.log(daysleft);
+            var daysleftinsec = daysleft * 86400000;
+            console.log(daysleftinsec)
+            var totalinptime = daysleftinsec + inphoursInMs;
+            console.log(inpdateinsec)
+            console.log("inphrs" + inphoursInMs)
+            console.log("totalinp" + totalinptime)
+
+
+
+
+
+
+
+            var curday = curdate.getDate();
+            var cursec = 60;
+            var curhour = curdate.getHours();
+            console.log("curhr" + curhour)
+            var curmin = curdate.getMinutes();
+            console.log("curmin" + curmin)
+            var curmonth = curdate.getMonth();
+            var curdayinsec = ((curhour * 3600000) + (curmin * 60000));
+            console.log("durday" + curdayinsec)
+
+            var dayhour = 24;
+            var timeleft = totalinptime - curdayinsec;
+            console.log("time left:" + timeleft)
+
+            // var currenthourintominutes = curdate.getHours() * 60;
+            // console.log(alldayminutes - currenthourintominutes)
+            // todayhours = (alldayminutes - currenthourintominutes)/12;
+
+
+
+            console.log(inphoursInMs)
+            var days = Math.floor(timeleft / (24 * 60 * 60 * 1000));
+            console.log("days" + days)
+            var daysms = timeleft % (24 * 60 * 60 * 1000);
+            var hours = Math.floor(daysms / (60 * 60 * 1000));
+            console.log("hr" + hours)
+            var hoursms = timeleft % (60 * 60 * 1000);
+            var minutes = Math.floor(hoursms / (60 * 1000));
+            console.log("mi" + minutes)
+            var minutesms = timeleft % (60 * 1000);
+            var cursec = curdate.getSeconds();
+
+
+
+
+
+
+            if (timeleft < 0 || curdate.getMonth()*10>datearr[1]*10 || (curdate.getDate()<datearr[2]&&curdate.getMonth==datearr[1])) {
+
+                alert("enter valid date")
+
+                $("#sec").val(00)
+                $("#minute").val(00)
+
+                $("#hour").val(00)
+
+            }
+            // if(datearr[]){
+
+            // }
+
+            else {
+
+
+                var timer = setInterval(function () {
+
+                    console.log("se" + cursec)
+                    cursec--;
+
+                    $("#sec").val(cursec)
+                    $("#minute").val(minutes)
+
+                    $("#hour").val(hours)
+                    $("#day").val(days)
+
+
+                    if (cursec == 0 && minutes != 0) {
+                        minutes = minutes - 1;
+
+                        cursec = 60;
+
+                    }
+
+                    if (minutes == 0 && hours >= 1) {
+                        hours = hours - 1;
+                        minutes = 59;
+
+
+                    }
+
+                    if (hours == 0) {
+                        if (days > 0) {
+                            days--;
+                            hours = 23;
+                            minutes = 59
+                        }
+                        else {
+                            days = 0;
+                            hours = 0;
+                            minutes = 0;
+                        }
+                    }
+
+
+
+                }, 1000)
+            }
+            if(timeleft<0){
+                clearInterval(timer)
+            }
+
+        })
+    })
+
+
+</script>
+
+</html>

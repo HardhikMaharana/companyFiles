@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="calc.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: aqua; width:40%; position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; padding: 3%;border: 2px solid rgb(146, 236, 236); border-style: outset; border-radius: 20px; ">
+        <div class="textareacont" style="width:100%;display: flex;flex-direction: row;">
+            <div>
+                <label for="">Number</label><br>
+                <input type="number" id="area1">
+            </div>
+            <div>
+                <label for="">Operator</label><br>
+                <input type="text"  id="area2">
+            </div>
+            <div>
+                <label for="">Number</label><br>
+                <input type="number" id="area3">
+            </div>
+            
+            
+        </div>
+        <div id="par">
+            <p>=0</p>
+         </div>
+    
+        <div class="buttoncont" style="text-align: center; width: 100%;">
+            <table style="width: 100%;">
+                <tbody><tr>
+                    </tr><tr>
+                        <td><button onclick="btnvalue()" value="+" class="symbol">+</button></td>
+                        <td><button onclick="btnvalue()" value="-" class="symbol">-</button></td>
+                        <td><button onclick="btnvalue()" value="*" class="symbol">*</button></td>
+                        <td><button onclick="btnvalue()" value="%" class="symbol">%</button></td>
+                    </tr>
+                 
+                
+                <tr>
+                    <td><button value="1" onclick="numval()">1</button></td>
+                    <td><button value="2" onclick="numval()">2</button></td>
+                    <td><button value="3" onclick="numval()">3</button></td>
+                    <td><button value="4" onclick="numval()">4</button></td>
+                </tr>
+                <tr>
+                    <td><button value="5">5</button></td>
+                    <td><button value="6">6</button></td>
+                    <td><button value="7">7</button></td>
+                    <td><button value="8">8</button></td>
+                </tr>
+                <tr>
+                    <td><button value="9">9</button></td>
+                    <td><button value="0">0</button></td>
+                    <td><button value="/">/</button></td>
+                    <td><button onclick="calc()">=</button></td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+   
+   

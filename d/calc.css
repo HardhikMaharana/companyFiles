@@ -1,0 +1,21 @@
+button{
+    width: 100%;
+    height:40px;
+    border: 1.5px solid aqua;
+    border-style: outset;
+    border-radius: 10px;
+}
+button:hover{
+    cursor: pointer;
+}
+input{
+    width: 100%;
+    border: 1.5px solid aqua;
+    border-style: inset;
+    border-radius: 10px;
+    height: 20px;
+}
+label{
+font-size: 12px;
+font-weight: 600;
+}

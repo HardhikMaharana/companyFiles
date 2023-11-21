@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul>
+            <li data-id="1"><span>+</span> HTML
+            
+              <div id="div1" style="display: none;">
+                <ul>
+                    <li>ht</li>
+                    <li>ht</li>
+                    <li>ht</li>
+                </ul>
+              </div>
+            </li>
+
+            <li data-id="2"><span>+</span>HTML
+            
+                <div id="div2" style="display: none;">
+                  <ul>
+                      <li>ht</li>
+                      <li>ht</li>
+                      <li>ht</li>
+                  </ul>
+                </div>
+            </li>
+
+            
+        </ul>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
+   <script>
+    $(document).ready(function(){
+        $("li").click(function(){
+            var did=$(this).data('id');
+            console.log(did);
+          
+            $("#div"+did).slideToggle(1000,function(){
+                if($("span").html()=="+") {
+                    $("span").html("-")
+                }
+                else{
+                    $("span").html("+")
+                }
+            })
+        })
+    })
+   </script>
+
+
+
+
+</body>
+</html>

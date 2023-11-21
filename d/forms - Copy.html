@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forms.css">
+    <title>Document</title>
+    <style>
+        table, tr, td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrapper">
+    <form action="">
+        <table id="tb">
+            <th colspan="2">Register here</th>
+            <tbody>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="feildval" id=""></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="feildval" id=""></td>
+                </tr>
+                <tr>
+                    <td>Phone no</td>
+                    <td><input type="number" name="feildval" id=""></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td><input type="number" name="feildval" id="age"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="feildval" id="" cols="30" rows="10"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><label for="">Female</label><input type="radio" style="width: auto;" name="gender" id="f" value="female"> <label for="">Male</label><input type="radio" style="width: auto;" name="gender" id="m" value="male"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <button id="btn" type="button">Submit</button></td>
+                   
+                </tr>
+            </tbody>
+           
+        </table>
+    </form>
+    
+    <table id="t2">
+        <tr><td>Name</td> <td>Email</td> <td>Phno</td> <td>Age</td> <td>address</td> <td>Gender</td></tr>
+    </table>
+    <div id="t3">
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="forms.js"></script>
+   </div>
+</body>
+</html>

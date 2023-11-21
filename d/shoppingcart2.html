@@ -1,0 +1,690 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        .navdiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        .prodcontainer {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            flex-wrap: wrap;
+
+            justify-content: space-evenly;
+
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .prodcard {
+            width: 20%;
+            padding: 13px;
+            background-color: rgba(1, 1, 1, .6);
+            color: azure;
+            margin: 10px;
+            border: .5px solid rgba(1, 1, 1, .2);
+            box-shadow: .4px .4px 3px .4px rgba(1, 1, 1, .6);
+        }
+
+        .prodbtn {
+            background-color: black;
+            color: azure;
+            border-radius: 5px;
+            height: 40px;
+            border: none;
+            width: 23.7%;
+            margin: 4px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .prodcard img {
+            width: 100%;
+        }
+
+        .prodcard:hover{
+            transform: scale(102%) ;
+            box-shadow:1px 5px 5px 1px rgb(248, 188, 188) ;
+       
+        }
+     
+
+        ul li {
+            display: inline;
+            padding: 4px;
+            margin: 4px;
+
+        }
+
+        ul li:hover {
+            cursor: pointer;
+        }
+
+        .ullicontainer {
+            text-align: center;
+            margin-top: 33px;
+        }
+
+        li {
+            background-color: rgb(206, 206, 206);
+            border-radius: 10%;
+
+        }
+
+        .addtocart {
+            width: 100px;
+            height: 30px;
+            background-color: rgb(190, 219, 58);
+            border: none;
+            border-radius: 1px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 600;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 16px 15px 16px;
+        }
+
+        .logsign {
+            padding: 10px;
+            outline: none;
+            border: none;
+            background-color: rgb(89, 226, 215);
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 1px 4px 4px rgb(153, 153, 153);
+        }
+
+        .cart {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(53, 173, 243);
+            box-shadow: 1px 4px 4px rgb(153, 153, 153);
+            border: none;
+        }
+
+        .cartcard {
+            position: absolute;
+            width: 90vw;
+            height: auto;
+            border-radius: 10px;
+            background-color: rgba(80, 80, 80, 0.7);
+            backdrop-filter: blur(9px);
+            left: 5%;
+            color: white;
+            font-family: sans-serif;
+            display: none;
+            z-index: 1;
+        }
+
+        .cartdata {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .cartdata img {
+            height: 100px;
+            width: 100px;
+        }
+
+        .delete {
+            width: 70px;
+            height: 30px;
+            background-color: rgb(219, 216, 58);
+            border: none;
+            border-radius: 1px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 600;
+        }
+
+        .logindiv {
+
+            display: none;
+
+            width: 30vw;
+            height: 35vh;
+            padding: 10px;
+            z-index: 1;
+            border-radius: 10px;
+            position: absolute;
+            left: 35%;
+            top: 40%;
+            background-color: rgba(1, 1, 1, .6);
+            backdrop-filter: blur(10px);
+
+        }
+
+        .logindiv input {
+            border: none;
+            border-bottom: 2px solid rgb(75, 247, 75);
+            outline: none;
+            background-color: transparent;
+            color: whitesmoke;
+            width: 100%;
+
+        }
+
+        .logindiv button {
+            padding: 10px;
+            width: 50%;
+            outline: none;
+            border: none;
+            background-color: rgb(228, 197, 111);
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 1px 4px 4px rgb(78, 78, 78);
+        }
+
+        .logout {
+            padding: 10px;
+            outline: none;
+            border: none;
+            background-color: rgb(89, 226, 215);
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 1px 4px 4px rgb(153, 153, 153);
+            display: none;
+        }
+
+        .order {
+            padding: 10px;
+            outline: none;
+            border: none;
+            background-color: rgb(245, 235, 97);
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 1px 4px 4px rgb(153, 153, 153);
+
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="brand">
+            <div style="margin-left:7px ;">
+                <h2>Super KickS</h2>
+            </div>
+            <div style="margin-right:7px ;">
+                <button class="logsign">Login/Signup</button>
+                <button class="logout">Log Out</button> |
+                <button class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="logindiv">
+            <form class="inputcontainer" style="display: flex;flex-direction: column;justify-content: space-evenly;
+            align-items: center;width: 100%; height: 100%; ">
+                <input type="text" class="id" placeholder="Your Id">
+                <input type="password" class="pass" placeholder="Your Password">
+                <button class="login">Login</button>
+                <p>New Here? <a href="#" class="sign">Signup</a></p>
+            </form>
+
+        </div>
+        <div class="cartcard">
+
+            <div class="total">
+                <h4>Cart Total: 0</h4>
+                <button class="order">Place Order</button>
+            </div>
+        </div>
+        <div class="navdiv">
+            <button class="prodbtn" data-id="1">Puma</button>
+            <button class="prodbtn" data-id="2">Nike</button>
+            <button class="prodbtn" data-id="3">Adidas</button>
+            <button class="prodbtn" data-id="4">Under Armour</button>
+        </div>
+        <div class="prodcontainer">
+
+
+            <div class='prodcard Nike'><img src='jordan1.webp'>
+                <h5>Jordan1 retro</h5>
+                <p>Nike</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Nike'><img src='jordan2.webp'>
+                <h5>Low jordan OG</h5>
+                <p>Nike</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Nike'><img src='jordan3.webp'>
+                <h5>Varcity Blue low</h5>
+                <p>Nike</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Nike'><img src='jordan4.webp'>
+                <h5>Airjordan white</h5>
+                <p>Nike</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+
+            <div class='prodcard Adidas'><img src='adidas1.webp'>
+                <h5>Black Trainer</h5>
+                <p>Adidas</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Adidas'><img src='adidas2.webp'>
+                <h5>Running Shoes</h5>
+                <p>Adidas</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Adidas'><img src='adidas3.webp'>
+                <h5>Tennis shoes</h5>
+                <p>Adidas</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard Adidas'><img src='adidas4.webp'>
+                <h5>Track Shoes</h5>
+                <p>Adidas</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+
+            <div class='prodcard ua'><img src='ua1.jpeg'>
+                <h5>Gym Trainers</h5>
+                <p>Under Armour</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard ua'><img src='ua2.jpg'>
+                <h5>Champions T Shirt</h5>
+                <p>Under Armour</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard ua'><img src='ua3.jpeg'>
+                <h5>OG Cap</h5>
+                <p>Under Armour</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard ua'><img src='ua4.png'>
+                <h5>Training shoe</h5>
+                <p>Under Armour</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+
+            <div class='prodcard puma'><img src='puma1.webp'>
+                <h5>Hightop sneakers</h5>
+                <p>Puma</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard puma'><img src='puma2.webp'>
+                <h5>Midcart sneakers</h5>
+                <p>Puma</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard puma'><img src='puma4.webp'>
+                <h5>leadcart sneaker</h5>
+                <p>Puma</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+            <div class='prodcard puma'><img src='puma5.webp'>
+                <h5>Blue high top</h5>
+                <p>Puma</p>
+                <p class="price">150 $</p><button class='addtocart'>Add To Cart</button>
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="ullicontainer">
+            <ul class="listappender">
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+     
+            for (i = 0; i < 26; i++) {
+                var letter = String.fromCharCode('A'.charCodeAt() + i)
+                $(".listappender").append("<li data-id=" + letter + " class='listli'>" + letter + "</li>")
+            }
+            $(".prodbtn").click(function () {
+                var btnid = $(this).data("id");
+                console.log(btnid);
+                $(".prodcontainer").css("display", "flex")
+
+                if (btnid == 1) {
+                    $(".Adidas").hide();
+                    $(".puma").show();
+                    $(".ua").hide();
+                    $(".Nike").hide();
+                }
+                if (btnid == 2) {
+
+                    $(".Adidas").hide();
+                    $(".puma").hide();
+                    $(".ua").hide();
+                    $(".Nike").show();
+                }
+                if (btnid == 3) {
+                    $(".Adidas").show();
+                    $(".puma").hide();
+                    $(".ua").hide();
+                    $(".Nike").hide();
+                }
+                if (btnid == 4) {
+                    $(".Adidas").hide();
+                    $(".puma").hide();
+                    $(".ua").show();
+                    $(".Nike").hide();
+
+                }
+
+
+            })
+
+            var lidataid
+            $(".listli").click(function () {
+                lidataid = $(this).data("id");
+                var proddetails = $(".prodcard")
+                console.log(proddetails)
+
+                filterProductsByAlphabet(lidataid);
+            });
+
+            function filterProductsByAlphabet(lidataid) {
+                $(".prodcard").hide();
+
+                $("h5").each(function () {
+
+                    const productName = $(this).text();
+                    console.log(productName)
+                    if (productName.charAt(0).toUpperCase() === lidataid) {
+                        console.log(lidataid, productName.charAt(0))
+                        $(this).closest(".prodcard").show();
+
+                    }
+
+                })
+            }
+            $(".cart").click(function () {
+                $(".cartcard").slideToggle(1000)
+            })
+
+            var logoutdata=JSON.parse(localStorage.getItem("logoutcartData"));
+            var logoutcart = logoutdata;
+
+            //append before login
+           
+        
+           
+                for(i=0;i<logoutcart.length;i++){
+                $(".cartcard").prepend("<div class='cartdata'>" + logoutcart[i] + "</div>")
+     
+            }
+          
+           
+            
+
+            var pricearr=[];
+            var k=0;
+            var totalprice=0;
+            var price;
+            $(".addtocart").click(function () {
+                var carddata = $(this).closest(".prodcard").html()
+                console.log(carddata)
+                $(".cartcard").prepend("<div class='cartdata'>" + carddata + "<button class='delete'>Delete</button></div>")
+                $(".cartdata .addtocart").css("display", "none")
+
+                // appender()
+                tprice()
+                $(".cartcard").each(function () {
+                    logoutcart.push($(".cartdata").html())
+                    // console.log(cartarr)
+                    var logoutcartdata = JSON.stringify(logoutcart)
+                    localStorage.setItem("logoutcartData", logoutcartdata)
+                    // console.log(cartdata)
+                    logoutdata = JSON.parse(localStorage.getItem("logoutcartData"))
+                })
+                console.log(logoutdata)
+                var price = $(this).closest(".price").text()
+                console.log(price);
+                $(".delete").click(function () {
+                    $(this).closest(".cartdata").remove()
+                    var logoutdeltcard = $(this).closest(".cartdata").html()
+             
+                if (logoutcart.includes(logoutdeltcard)) {
+                    logoutcart.splice(logoutdeltcard, 1);
+                    var logoutdata = JSON.stringify(logoutcart)
+                    localStorage.setItem("logoutcartData", logoutdata)
+                    console.log(logoutdata)
+                    logoutdata = JSON.parse(localStorage.getItem("logoutcartData"))
+                    console.log(logoutdata)
+                }
+                })
+            })
+
+            function tprice(){
+                $(".cartdata").each(function(){
+                    price=  $(this).children(".price").html().split(" ")
+               
+                })
+                for(i=0;i<price.length;i++){
+                    if($.isNumeric( price[i])){
+                        pricearr[k]=price[i]
+                        k++;
+                    }
+                }
+                console.log(pricearr)
+                
+                
+             var l=0;
+                for(j=l;j<=l;j++){
+                    totalprice+=parseInt( pricearr[j])
+                   
+                }
+                console.log(totalprice)
+                $("h4").text("Total Price: "+totalprice+"$")
+            }
+            
+
+            
+           
+
+            $(".delete").click(function () {
+                var logoutdeltcard = $(this).closest(".cartdata").html()
+                $(this).closest(".cartdata").remove()
+                if (logoutcart.includes(logoutdeltcard)) {
+                    logoutcart.splice(logoutdeltcard, 1);
+                    var logoutdata = JSON.stringify(logoutcart)
+                    localStorage.setItem("logoutcartData", logoutdata)
+                    console.log(logoutdata)
+                    logoutdata = JSON.parse(localStorage.getItem("logoutcartData"))
+                    console.log(logoutdata)
+                }
+                })
+
+            $(".logsign").click(function () {
+
+                $(".logindiv").toggle(1000)
+
+            })
+
+            $(".sign").click(function () {
+                $(".inputcontainer").html("<input type='text' class='nid' placeholder='Your Id'><input type='password' class='npass' placeholder='Your Password'><input type='password' class='cpass' placeholder='Confirm Password'><button class='signin'>Sign In</button><p>Have A Account? <a href='#' class='log'>Login</a></p>")
+
+                $(".nid").on("focusout", function () {
+                    Cookies.set("name",$(this).val())
+                    localStorage.setItem("Id", $(this).val());
+                })
+                $(".npass").on("focusout", function () {
+                    localStorage.setItem("Pass", $(this).val())
+                    Cookies.set("pass",$(this).val())
+                })
+                $(".cpass").on("focusout", function () {
+                    localStorage.setItem("Cpass", $(this).val())
+                })
+                $(".signin").click(function () {
+                    if (localStorage.getItem("Pass") == localStorage.getItem("Cpass")) {
+                        alert("Successfuly Registered");
+                        $("form").trigger("reset")
+                        $(".logindiv").hide()
+                    }
+                    else {
+                        alert("Password Does not Match");
+                    }
+                })
+
+
+                $(".log").click(function () {
+                    $(".inputcontainer").html(' <input type="text" class="id" placeholder="Your Id"><input type="password" class="pass" placeholder="Your Password"><button class="login">Login</button><p>New Here? <a href="#" class="sign">Signup</a></p>')
+                    $(".sign").click(function () {
+                        $(".inputcontainer").html("<input type='text' class='nid' placeholder='Your Id'><input type='password' class='npass' placeholder='Your Password'><input type='password' class='cpass' placeholder='Confirm Password'><button class='signin'>Sign In</button><p>Have A Account? <a href='#' class='log'>Login</a></p>")
+
+                        $(".nid").on("focusout", function () {
+                            localStorage.setItem("Id", $(this).val());
+                        })
+                        $(".npass").on("focusout", function () {
+                            localStorage.setItem("Pass", $(this).val())
+                        })
+                        $(".cpass").on("focusout", function () {
+                            localStorage.setItem("Cpass", $(this).val())
+                        })
+                        $(".signin").click(function () {
+                            if (localStorage.getItem("Pass") == localStorage.getItem("Cpass")) {
+                                alert("Successfuly Registered");
+                                $("form").trigger("reset")
+                                $(".logindiv").hide()
+                            }
+                            else {
+                                alert("Password Does not Match");
+                            }
+                        })
+
+                    })
+                })
+            })
+
+
+
+            $(".login").click(function (event) {
+                event.preventDefault()
+                if ($(".id").val() == Cookies.get('name') && $(".pass").val() == Cookies.get("pass")) {
+                    $(".logindiv").hide()
+                    $("form").trigger("reset")
+                    $("h2").text("Super KickS | " + localStorage.getItem("Id"))
+                    $(".logout").show();
+                    $(".logsign").hide()
+
+                    
+                    $(".delete").click(function () {
+                            var deltcard = $(this).closest(".cartdata").html()
+                            $(this).closest(".cartdata").remove()
+                            if (cartarr.includes(deltcard)) {
+                                cartarr.splice(deltcard, 1);
+                                var cartdata = JSON.stringify(cartarr)
+                                localStorage.setItem("cartData", cartdata)
+                                console.log(cartdata)
+                                getdata = JSON.parse(localStorage.getItem("cartData"))
+                                console.log(getdata)
+                            }
+
+                        })
+
+                    
+                    var getdata = JSON.parse(localStorage.getItem("cartData"));
+                    var cartarr = getdata;
+                  
+                    console.log(cartarr)
+                    $(".addtocart").click(function () {
+
+                        $(".cartcard").each(function () {
+                            cartarr.push($(".cartdata").html())
+                            // console.log(cartarr)
+                            var cartdata = JSON.stringify(cartarr)
+                            localStorage.setItem("cartData", cartdata)
+                            // console.log(cartdata)
+                            getdata = JSON.parse(localStorage.getItem("cartData"))
+                            // console.log(getdata)
+
+
+                        })
+
+
+                        $(".delete").click(function () {
+                            var deltcard = $(this).closest(".cartdata").html()
+                            $(this).closest(".cartdata").remove()
+                            if (cartarr.includes(deltcard)) {
+                                cartarr.splice(deltcard, 1);
+                                var cartdata = JSON.stringify(cartarr)
+                                localStorage.setItem("cartData", cartdata)
+                                console.log(cartdata)
+                                getdata = JSON.parse(localStorage.getItem("cartData"))
+                                console.log(getdata)
+                            }
+
+                        })
+
+                    })
+                    //append after login
+
+                    for (i = 0; i < getdata.length; i++) {
+                        $(".cartcard").prepend("<div class='cartdata'>" + getdata[i] + "</div>")
+
+                    }
+
+
+
+                    // localStorage.setItem("cartData",$(this).closest(".prodcard").html())
+
+
+                }
+                else {
+                    alert("Wrong Id/Pass")
+                }
+
+            })
+
+            $(".logout").click(function(){
+                
+            })
+
+        });
+    </script>
+</body>
+
+</html>

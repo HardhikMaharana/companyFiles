@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 100%;
+            /* border:1px solid black; */
+            height: 100%;
+        }
+        tr,td{
+            border: 1px solid black;
+            height: 30px;
+        }
+        tr{
+            width: 100%;
+        }
+     .xd td{
+        width: 50%;
+     }
+  
+        .ab tr td{
+            width: 33%;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table cellspacing="90px">
+         <tr class="xd">
+            <td> </td>
+            <td style="width: 50%;">
+                <table class="ab">
+                    <tr style="width: 100%;">
+                        <td class="xx"></td>
+                        <td class="xx"></td>
+                        <td class="xx"></td>
+                    </tr>
+                </table>
+               
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+       
+        <tr>
+            
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            
+        </tr>
+    </table>
+</body>
+<script>
+    function bringWater(callback){
+        var water="water";
+        console.log("Bring Water");
+        callback(water);
+    }
+    function bringMaggi(callback){
+          var maggi="maggi";
+        console.log("Bring maggi")
+        callback(maggi);
+    }
+    function makeMaggi(water,maggi,callback){
+        console.log("making maggi");
+        
+    }
+
+    bringWater(()=>{
+        bringMaggi(()=>{
+            makeMaggi(()=>{
+                console.log("made");
+            })
+        })
+    })
+</script>
+</html>

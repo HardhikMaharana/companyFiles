@@ -1,0 +1,251 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+    <style>
+        .navdiv {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            background-color: rgb(255, 128, 0);
+            height: 48px;
+        }
+
+        .navdiv button {
+            width: 16.66%;
+            height: 40px;
+            background-color: rgb(53, 53, 53);
+            font-weight: 600;
+            color: azure;
+            border: none;
+        }
+
+        .navdiv button:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .fivelevelappender,
+        .firstlevelappender,
+        .seclevelappender,
+        .thrlevelappender,
+        .fourlevelappender {
+            width: 20vw;
+            height: auto;
+            background-color: blue;
+        }
+
+        .fivelevelappender button,
+        .firstlevelappender button,
+        .seclevelappender button,
+        .thrlevelappender button,
+        .fourlevelappender button {
+            background-color: rgb(53, 53, 53);
+            font-weight: 600;
+            color: azure;
+            border: none;
+            padding: 20px;
+        }
+
+        .fivelevelappenderinner,
+        .firstlevelappenderinner,
+        .seclevelappenderinner,
+        .thrlevelappenderinner,
+        .fourlevelappenderinner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .firstlevelappender {
+            position: absolute;
+            left: 35%;
+            display: none;
+
+        }
+
+        .seclevelappender {
+            position: absolute;
+            left: 55%;
+            top: 30%;
+            display: none;
+        }
+
+        .thrlevelappender {
+            position: absolute;
+            left: 75%;
+            top: 35%;
+            display: none;
+
+        }
+
+        .fourlevelappender {
+            position: absolute;
+            left: 17%;
+
+            display: none;
+
+        }
+
+        .fivelevelappender {
+            position: absolute;
+            left: 50%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navdiv">
+            <!-- <button>Home</button>
+
+            <button class="About">
+                About Us >
+            </button>
+            <button class="4Level">
+                4 Level Menu >
+            </button>
+            <button class="Services">
+                Services >
+            </button>
+            <button class="products">
+                Products
+            </button>
+            <button class="contacts">
+                Contacts
+            </button> -->
+        </nav>
+
+    </div>
+    <div class="firstlevelappender">
+        <div class="firstlevelappenderinner">
+
+        </div>
+    </div>
+    <div class="seclevelappender">
+        <div class="seclevelappenderinner">
+
+        </div>
+    </div>
+    <div class="thrlevelappender">
+        <div class="thrlevelappenderinner">
+
+        </div>
+    </div>
+    <div class="fourlevelappender">
+        <div class="fourlevelappenderinner">
+
+        </div>
+    </div>
+    <div class="fivelevelappender">
+        <div class="fivelevelappenderinner">
+
+        </div>
+    </div>
+
+ 
+
+    <script>
+        $(document).ready(function () {
+
+            let Contents=[{
+                home:"Home",
+               aboutus:{S1:"Subitem1",S2:"Subitem2",S3:"Subitem3"},
+                level:{l1:"Subitem1",l2:"Subitem2",l3:{
+                    m1:"Subitem1",m2:{
+                        n1:"Subitem1", n2:"Subitem2", n3:"Subitem3"
+                    },m3:"Subitem1"
+                },l4:"Subitem4"},
+                service:"Services",
+                contact:"contact US"
+        }]
+        
+
+// for (var i in Contents) {
+//    console.log(Contents[i].aboutus,)
+// }
+
+   
+   var i=0  ;   
+     for(a in Contents){
+        console.log(Contents[a]);
+        var keyvalues=Object.keys( Contents[a]);
+
+        console.log(keyvalues)
+       
+            console.log("key"+keyvalues[i])
+            
+        if(Contents.keyvalues[i].length>1){
+            console.log(Contents.keyvalues[i].values())
+            i++;
+     }
+     else{
+        i++;
+     }
+    
+     }
+     
+
+  
+            // var arr1 = [" <button>Subitem1</button>", " <button>Subitem2</button>", " <button class='drop'>Subitem3 ></button>", " <button>Subitem4</button>"];
+            // var arr2 = [" <button>Subitem1</button>", " <button class='drop2'>Subitem2 ></button>", " <button >Subitem3</button>"];
+            // var arr3 = [" <button>Subitem1</button>", " <button >Subitem2</button>", " <button >Subitem3</button>"]
+            // var arr4 = [" <button>Company Name</button>", " <button>Works</button>", " <button >Tech </button>", " <button>People</button>"];
+            // var arr5 = [" <button>Web Dev</button>", " <button>App Dev</button>", " <button >Block Chain</button>", " <button>Support</button>"]
+            // for (i = 0; i < arr1.length; i++) {
+            //     $(".firstlevelappenderinner").append(arr1[i])
+            // }
+            // for (i = 0; i < arr2.length; i++) {
+            //     $(".seclevelappenderinner").append(arr2[i])
+            // }
+            // for (i = 0; i < arr3.length; i++) {
+            //     $(".thrlevelappenderinner").append(arr3[i])
+            // }
+            // for (i = 0; i < arr4.length; i++) {
+            //     $(".fourlevelappenderinner").append(arr4[i])
+            // }
+            // for (i = 0; i < arr5.length; i++) {
+            //     $(".fivelevelappenderinner").append(arr5[i])
+            // }
+
+            $(".4Level").mouseenter(function () {
+              
+                $(".firstlevelappender").show(500)
+
+
+
+                $(".drop").hover(function () {
+                    $(".seclevelappender").show(500)
+                    $(this).css("background-color", "black")
+
+
+                    $(".drop2").hover(function () {
+                        $(this).css("background-color", "black")
+                        $(".thrlevelappender").show(500)
+                       
+                    })
+                })
+            })
+
+            $(".About").hover(function () {
+                $(".fourlevelappender").toggle(500)
+            })
+            $(".Services").hover(function () {
+                $(".fivelevelappender").toggle(500)
+            })
+            $(window).click(function () {
+                $(".firstlevelappender").hide()
+                $(".seclevelappender").hide()
+                $(".thrlevelappender").hide()
+            })
+
+        })
+ 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: transparent;
+        }
+
+        .Registration-div {
+            background-color: rgba(255, 255, 255, 0.774);
+            backdrop-filter: blur(10%);
+            color: black;
+            line-height: 30px;
+            width: 25%;
+            padding: 1%;
+            border-radius: 10px;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        body:before {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+          
+            background-image: url(bookmyshow.webp);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-background-size: cover;
+            background-size: cover;
+
+
+            filter: blur(1px);
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        button {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        input,
+        button {
+            border: none;
+            outline: none;
+            margin-top: 30px
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=email] {
+            border-bottom: 2px solid black;
+            background-color: transparent;
+        }
+         input:focus{
+            border-bottom: 2px solid  #fc5087;
+         }
+       
+
+        button {
+            height: 40px;
+            border-radius: 5px;
+            background-color: #fc5087;
+            color: white;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+     
+        <div class="Registration-div">
+            <form target="" action="">
+
+                <input type="text" name="fname" id="fname" placeholder="Name" />
+
+                <input type="email" name="mail" id="mail" placeholder="Email" />
+
+                <input type="password" name="password" id="password" placeholder="Password" />
+
+                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" />
+                <button style="margin-top:20px">Register</button>
+
+                <p>Already Have An Account? @Html.ActionLink("Log In", "UserLoginPage", "UserLogin") </p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

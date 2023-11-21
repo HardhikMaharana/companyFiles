@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td,th{
+            border:solid 2px black;
+            padding: 5px;
+            border-collapse: collapse;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div style="border:2px solid black;width:50%;padding: 10px;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+            <div style="width: 100%;display: flex;justify-content: space-between;padding: 5px;">
+                <input id="search" type="text" placeholder="Search text....">
+                <button onclick="valuegetter()">Sort first name</button>
+            </div>
+            
+            <table style="width:98%" >
+               
+                    <tr>
+                        <th>
+                            First name  
+                        </th>
+                        <th>
+                            Last name
+                        </th>
+                        <th>
+                            E mail   
+                        </th>
+                        <th>
+                            State
+                        </th>
+                    </tr>
+              
+                <tbody>
+                    <tr>
+                        <td>
+                            John
+                        </td>
+                        <td>
+                            doe
+                        </td>
+                        <td>
+                            john@gm.com
+                        </td>
+                        <td>
+                            Odisha
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>Rakesh</td>
+                        <td>Mohanty</td>
+                        <td>Rakesh@gm.com</td>
+                        <td>Roulkela</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Upasana
+                        </td>
+                        <td>patel</td> 
+                        <td>upasana@gm.co.in</td>
+                        <td>
+                            Puri
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Prasanna
+                        </td>
+                        <td>patel</td> 
+                        <td>prasana@gm.co.in</td>
+                        <td>
+                            Cuttack
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Gopal
+                        </td>
+                        <td>Barik</td> 
+                        <td>gopal@gm.com</td>
+                        <td>
+                            Keandrapada
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        
+   document.getElementById("search").onkeyup=function(){tablesearch()}
+
+   function tablesearch(){
+    var searchval=document.getElementById("search").value;
+    document.getElementsByClassName("tbody tr").filter(
+        document.getElementsByClassName("tbody tr").toggle(document.getElementsByClassName("tbody tr").value.toLowercase)
+    )
+        
+    
+   }
+
+    </script>
+</body>
+</html>

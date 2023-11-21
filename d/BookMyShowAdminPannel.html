@@ -1,0 +1,126 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        .navbardiv{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            height: 30px;
+        }
+        #logoutbtn{
+            height: 30px;
+            width: 70px;
+            border-radius: 5px;
+            background-color: #fc5087;
+            color: white;
+            border: none;
+            outline: none;
+        }
+        #adminName{
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .pannel{
+            width: 100%;;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+        .sidebar{
+            width:22%;
+            background-color: #0E0D26;
+            display: flex;
+            flex-direction: column;
+            padding: 1%;
+         
+        }
+        .mainPannel{
+            width: 77%;
+            background-color: whitesmoke;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            
+        }
+        .reportdiv{
+            width: 23%;
+            background-color: aqua;
+            height: 20%;
+            margin-top:20px;
+            border-radius:10px ;
+           text-align: center;
+           box-shadow: 1px 1px 5px 1px rgb(191, 191, 191);
+        }
+        #noOfUserDiv{
+            background-color:#4eec59;
+        }
+        #noOfBookingsDiv{
+            background-color:#f98440;
+        }
+        #noOfMoviesDiv{
+            background-color:#ff5353;
+        }
+        #noOfTheatersDiv{
+            background-color:#5792f9;
+        }
+        .sidebarBtn{
+            height: 50px;
+            border: 0;
+            border-bottom: 2px solid black;
+            padding: 0%;
+            color: black;
+            font-weight: 600;
+            background-color: white;
+            margin-top: 5px;
+        }
+        .sidebarBtn:hover{
+            color: #fc5087;
+            border-bottom: 2px solid #fc5087;
+            
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar">
+            <div class="navbardiv">
+                <div>
+              <p id="adminName"> Welcome | <span>Admin Name</span></span></p>    
+                </div>
+                <div>
+                <button id="logoutbtn">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <div class="pannel">
+            <div class="sidebar">
+                <button id="dashboard" class="sidebarBtn">Dashboard</button>
+                <button id="theaters" class="sidebarBtn">Theaters</button>
+                <button id="movies" class="sidebarBtn">Movies</button>
+                <button id="bookings" class="sidebarBtn">Bookings</button>
+                <button id="users" class="sidebarBtn">Users</button>
+            </div>
+            <div class="mainPannel"> 
+                <div id="noOfMoviesDiv" class="reportdiv"><p>Movies</p></div>
+                <div id="noOfTheatersDiv" class="reportdiv"><p>Theaters</p></div>
+                <div id="noOfBookingsDiv" class="reportdiv"><p>Bookings</p> </div>
+                <div id="noOfUserDiv" class="reportdiv"><p>Users</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

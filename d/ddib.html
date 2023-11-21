@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Enter the Amount: <input id="amount" type="number"></p>
+    <p>Enter the coins (separate by comma):<input id="coins" type="text"></p>
+    <button id="button" onclick="amountTocoins()">Submit</button>
+    <p id="result"></p>
+
+
+    <script>
+       var  amount=document.getElementById("amount").value;
+        var coins=document.getElementById("coins").value;
+       
+        function amountTocoins(amount, coins) {
+            if (amount === 0) {
+                return [];
+            }
+            else {
+                if (amount >= coins[0]) {
+                    left = (amount - coins[0]);
+                    return [coins[0]].concat(amountTocoins(left, coins));
+                }
+                else {
+                    coins.shift();
+                    return amountTocoins(amount, coins);
+                }
+            }
+        }
+
+    </script>
+</body>
+
+
+</html>
