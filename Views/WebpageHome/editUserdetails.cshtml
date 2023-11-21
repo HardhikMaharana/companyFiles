@@ -1,0 +1,13 @@
+﻿@model List<ManagementWebApp.Models.movieBookingModels>
+
+@{
+    ViewBag.Title = "editUserdetails";
+    Layout = "~/Views/Shared/_LayoutAfterUserLogin.cshtml";
+}
+
+<form>
+    <input type="text" id="name" value="@Session["UserName"]"/>
+    <input type="text" id="mail" value="@Session["Emails"]"/>
+    <input type="text" id="phno" value="@Session["phoneno"]"/>
+    <input type="text" id="pass" />
+</form>

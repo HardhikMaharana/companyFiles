@@ -1,0 +1,31 @@
+﻿@model ManagementWebApp.Models.Admindetails
+@{
+    ViewBag.Title = "AddNewAdmin";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+<style>
+    form{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+
+    }
+    input[type=text]{
+        width:50%;
+        margin:10px 0px;
+    }
+
+</style>
+<h2>AddNewAdmin</h2>
+
+<div>
+    <form  method="post"  action="@Url.Action("setNewAdmin","Admin")" enctype="multipart/form-data">
+        @Html.TextBoxFor(e=> e.AdminName, new {@PlaceHolder="AdminName"})
+        @Html.TextBoxFor(e=>e.MailId, new { @PlaceHolder = "Mail Id" })
+        @Html.TextBoxFor(e=>e.PhoneNo, new { @PlaceHolder = "Phone No" })
+        @Html.TextBoxFor(e=>e.Password , new { @PlaceHolder = "Password" })
+        <label>Add Image</label><input type="file" name="adminImage" />
+        <button type="submit" class="btn-sm btn-primary" style="padding:10px;">Add</button>
+    </form>
+</div>

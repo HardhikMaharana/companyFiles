@@ -1,0 +1,149 @@
+﻿@model IEnumerable<ManagementWebApp.Models.movieBookingModels>
+
+@{
+    ViewBag.Title = "LandingPage";
+    Layout = "~/Views/Shared/_LayoutUserPage2.cshtml";
+    string username = (string)Session["UserName"];
+    if (username != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAfterUserLogin.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutUserPage2.cshtml";
+    }
+    var eventname = "";
+    var language = "";
+    var caste = "";
+    var description = "";
+    var duration = "";
+    var date = "";
+    var eventid = 0;
+    foreach (var i in Model)
+    {
+        eventname = @i.EventName;
+        language = @i.Language;
+        caste = @i.CasteName;
+        description = @i.Description;
+        duration = @i.Duration;
+
+        eventid = @i.eventid;
+    }
+
+}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<style>
+    .properties-container {
+        display: flex;
+        width: 30vw;
+        height: auto;
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: 0.1px 0.11px 2px 0.1px grey;
+        margin: 1% 0% 1% 1%;
+    }
+
+    .time {
+        padding: 10px;
+        background-color: white;
+        color: #fc5087;
+        border: 0.5px solid grey;
+        border-radius: 5px;
+    }
+
+    .moviedesc {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 50vh;
+        align-items:center;
+        padding: 2%;
+        background-color: rgb(0 0 0 / 0.5);
+        color: white;
+    }
+
+        .moviedesc div {
+            width: 48%;
+        }
+
+    .movietext h2 {
+        font-size: 70px;
+    }
+
+    .movietext p {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .movietext h4 {
+        font-size: 20px;
+    }
+
+    .movieimg img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .userdetails {
+        display: none;
+    }
+   
+</style>
+<div class="wrapper">
+
+    <div class="moviedesc">
+        <div class="movieimg">
+            @if (eventid == 1)
+            {
+                <img id="@eventid" src="~/Images/Jawan-SRK-film-fees-and-box-office.jpg" />
+            }
+            @if (eventid == 2)
+            {
+                <img src="~/Images/spider-man-far-from-home-banner.jpeg" />
+            }
+            else
+            {
+                <h3>Null</h3>
+            }
+
+
+
+
+        </div>
+        <div class="movietext">
+            <h2>@eventname</h2>
+            <h4>@language</h4>
+            <p>@caste . @description . @duration </p>
+        </div>
+
+    </div>
+  
+    @foreach (var i in Model)
+    {
+
+        <div class="properties-container">
+            <div>
+                <h3>@i.PropertyName : <span>@i.PropertyAddress</span></h3>
+                <h4>@i.PropertyLocation</h4>
+                <p>Price: @i.Price</p>
+            </div>
+            <div>
+                <a href="@Url.Action("SelectSeats","WebpageHome" ,new {@id=@i.propertyId})"><button class="time" id="@i.propertyId">@i.Time</button></a>
+            </div>
+        </div>
+
+    }
+
+
+</div>
+
+
+
+
+
+
+
+
+

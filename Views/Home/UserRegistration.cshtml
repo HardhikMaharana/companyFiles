@@ -1,0 +1,125 @@
+﻿@model ManagementWebApp.Models.UserDb
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_LayoutUserPage2.cshtml";
+}
+
+
+<style>
+    * {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .Registration-div {
+        background-color: rgba(255, 255, 255, 0.774);
+        backdrop-filter: blur(10%);
+        color: black;
+        line-height: 30px;
+        width: 25%;
+        padding: 1%;
+        border-radius: 10px;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    body:before {
+        content: '';
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+       
+        background-image: url('../../images/finding your creative niche.png');
+        z-index: -1;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        filter: blur(1px);
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .register {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    input,
+    .register {
+        border: none;
+        outline: none;
+        margin-top: 30px
+    }
+
+        input[type=text],
+        input[type=password],
+        input[type=email] {
+            border-bottom: 2px solid black;
+            background-color: transparent;
+        }
+
+        input:focus {
+            border-bottom: 2px solid #fc5087;
+        }
+
+
+    .register {
+        height: 40px;
+        border-radius: 5px;
+        background-color: #fc5087;
+        color: white;
+    }
+
+    h4 {
+        text-align: center;
+    }
+</style>
+
+
+
+<div class="wrapper">
+
+    <div class="Registration-div"> 
+        <h4>User Registration</h4>
+        @*<form target="" action="" method="post">*@
+        @using (Html.BeginForm("UserRegistration", "Home", FormMethod.Post, new { @class = "login-form" }))
+        {
+            @Html.TextBoxFor(item => item.Name, new { @id = "name", @placeholder = "Name" })
+
+            @Html.TextBoxFor(item => item.MailId, new { @id = "mail", @placeholder = "Email" })
+            @Html.TextBoxFor(item => item.PhoneNo, new { @id = "phno", @placeholder = "Phone No" })
+            @Html.PasswordFor(item => item.Password, new { @id = "password", @placeholder = "Password" })
+
+
+
+            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" />
+            <button class="register" type="submit" id="register" style="margin-top:20px">Register</button>
+
+            <p>Already Have An Account? @Html.ActionLink("Log In", "UserLoginPage", "WebpageHome") </p>
+
+            <p>Admin Login: @Html.ActionLink("Log In", "AdminLoginPage", "Home") </p>
+        }
+
+        @*</form>*@
+    </div>
+</div>
+
