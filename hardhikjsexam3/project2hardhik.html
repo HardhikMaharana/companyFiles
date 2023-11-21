@@ -1,0 +1,177 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" style="width: 100%;">
+        <div>
+            <table>
+                <tr>
+                    <th>
+                        <h2 style="text-decoration:underline">confirm order of 50 items</h2>
+                    </th>
+                </tr>
+                
+                    <tbody>
+                        <form action="" id="orders"></form>
+                        <tr style="display:inline">
+                            <td>
+                                <tr>
+                                    <td><input type="text" id="name" placeholder="Ener name"> </td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="email" id="email" placeholder="enter Email"> </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" id="phno" placeholder="enter Phone number"> 
+                                    </td>
+                                </tr>
+                            </td>
+                            <td>
+                                <textarea name="" id="" cols="30" rows="10" id="addr"> </textarea>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="addncomt"></td>
+                            </tr>
+                        </form>
+                    </tbody>
+                
+
+
+            </table >
+            <div class="itemcontainer">
+                <ol id="itemListContainer">
+                    <li>
+                        <select class="items" id="itemslist">
+                            <option value="">Select item</option>
+                        </select>
+                        <input type="number" placeholder="Item Qty">
+                    </li>
+                </ol>
+            </div>
+            <div class="buttoncontainer">
+                <button id="save">Save Order</button>
+                <button id="additem">Add New Item</button>
+            </div>
+
+
+        </div>
+        <div>
+            <h4>Order Summary</h4>
+            <table class="table" style="border:2px solid black;">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Item SKU</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="orderSummary"></tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+    <script>
+        function generateRandomProductCode() {
+            var min = 10000;
+            var max = 99999;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        $(document).on("click", "#deletebtn", function () {
+            $(this).closest("li").remove();
+        });
+
+        $(document).ready(function () {
+            var x;
+            for (i = 1; i <= 50; i++) {
+                x = "<option value='Suyog_product_" + i + "' data-id='item" + i + "'>Suyog_product_" + i + "</option>";
+                $(".items").append(x);
+            }
+
+            $("#additem").click(function () {
+                var y = "<li><select class='items' id='itemslist'></select><input type='number' placeholder='Item Qty'> <button id='deletebtn'>Delete</button></li>";
+                $("ol").append(y);
+
+                for (i = 1; i <= 50; i++) {
+                    x = "<option value='Suyog_product_" + i + "' data-id='item" + i + "'>Suyog_product_" + i + "</option>";
+                    $(".items").append(x);
+                }
+            });
+
+            $("#save").on("click", function () {
+                var name = $("#name").val();
+                var emailid = $("#email").val();
+                var phno = $("#phno").val();
+                var address = $("#addr").val();
+                var comment = $("#addncomt").val();
+                var selectedItems = [];
+
+                if ($.isNumeric(name)) {
+                    $("#name").val("");
+                    $("#name").attr("placeholder", "Name can't be a number");
+                }
+                if ($.trim(name) === "" || $(name).length < 20) {
+                    $("span").css("display", "block");
+                }
+                var regex = /^[A-Za-z\-]+$/;
+                if ($.trim(emailid) === "") {
+                    $("span").css("display", "block");
+                }
+                var regex = /^[0-9]+$/;
+                if ($.isNumeric(phno)|| regex.test(phno)) {
+
+                } else {
+                    $("#phno").val("");
+                    $("#phno").attr("placeholder", "Number can't hold characters");
+                    $("span").css("display", "block");
+                }
+                var regex = /^[A-Za-z\-]+$/;
+                if ($.trim(address) === "" || regex.test(address)) {
+                    $("span").css("display", "block");
+                }
+         
+                $("#itemListContainer li").each(function () {
+                    var item = {};
+                    console.log(item.sku)
+                    item.code = generateRandomProductCode();
+                    item.sku = $(this).find("select").val();
+                   
+                    item.quantity = $(this).find("input[type='number']").val();
+                    selectedItems.push(item);
+                });
+              
+
+                
+                $("#orderSummary").empty();
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var item = selectedItems[i];
+                    var row = "<tr><td>" + item.code + "</td><td>" + item.sku + "</td><td>" + item.quantity + "</td></tr>";
+                    
+                    $("#orderSummary").append(row);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

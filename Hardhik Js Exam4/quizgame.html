@@ -1,0 +1,173 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .wrapper {
+            position: relative;
+        }
+
+        .imgdiv {
+
+            width: 70%;
+            height: 90%;
+            background-color: antiquewhite;
+            margin-left: 15%;
+        }
+
+        .mainimg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .quizdiv {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            z-index: 1;
+
+            width: 72%;
+            height: 93%;
+            top: 0%;
+            left: 15%;
+            background-color: transparent;
+
+
+        }
+
+        .question,
+        .answerdiv {
+            width: 24.5%;
+            height: 50%;
+            border: 2px solid gray;
+            background-color: antiquewhite;
+            text-align: center;
+           
+        }
+
+        .question {
+            background-color: rgb(201, 204, 8);
+        }
+
+        .que,
+        .ans {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="imgdiv">
+            <img src="pexels-roshan-kamath-1661179.jpg" alt="" class="mainimg">
+
+        </div>
+        <div class="quizdiv">
+            <div class="que">
+                <div class="question qssocialwaver" data-qs="socialwaver">
+                    <p> Who can fly</p> 
+                </div>
+                <div class="question qshummingbird" data-qs="hummingbird">
+                    <p> Who can fly</p>
+                </div>
+                <div class="question qsostritch" data-qs="ostritch">
+                    <p> Who can fly</p> 
+                </div>
+                <div class="question qsartictern" data-qs="artictern">
+                    <p> Who can fly</p>
+                </div>
+                <div class="question qsalbatros" data-qs="albatros">
+                    <p> Who can fly</p>
+                </div>
+                <div class="question qsspinetailedswift" data-qs="spinetailedswift">
+                    <p> Who can fly</p>
+                </div>
+                <div class="question qspenguin" data-qs="penguin">
+                    <p> Who can fly</p>
+                </div>
+                <div class="question qsbargeadedgease" data-qs="bargeadedgease">
+                    <p> Who can fly</p>
+                </div>
+            </div>
+
+            <div class="ans">
+                <div class="answerdiv hummingbird" data-ans="hummingbird">
+                    <p>Humming bird </p>
+                </div>
+                <div class="answerdiv penguin" data-ans="penguin">
+                    <p> Gento Penguin</p>
+                </div>
+                <div class="answerdiv ostritch" data-ans="ostritch">
+                    <p> Ostritch</p>
+                </div>
+                <div class="answerdiv albatros" data-ans="albatros">
+                    <p> Albatros</p>
+                </div>
+                <div class="answerdiv artictern" data-ans="artictern">
+                    <p>Artictern</p>
+                </div>
+                <div class="answerdiv bargeadedgease" data-ans="bargeadedgease">
+                    <p>Bar headed gease</p>
+                </div>
+                <div class="answerdiv spinetailedswift" data-ans="spinetailedswift">
+                    <p>spinetailedswift</p>
+                </div>
+                <div class="answerdiv socialwaver" data-ans="socialwaver">
+                    <p>Social waver</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="score">
+            <p>Scrore=0/8</p>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var divval
+            $(".question").click(function () {
+                divval = $(this).data("qs");
+                console.log(divval)
+
+            })
+            var ansval;
+            var count = 0;
+            $(".answerdiv").click(function () {
+                ansval = $(this).data("ans");
+                console.log(ansval)
+
+                if (ansval == divval) {
+                    $(".qs" + ansval).html('   <img src='+ansval+'.jpg class="mainimg">');
+                    $("." + ansval).html('   <img src=ans'+ansval+'.jpg class="mainimg">');
+                    count++;
+                    $(".score").html("<p>Scrore=" + count + "/8</p>")
+                    
+                }
+                if(count==8){
+                    $(".quizdiv").css("display","none")
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>

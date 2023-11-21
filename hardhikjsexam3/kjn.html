@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Country Dropdown Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Country Dropdown Example</h1>
+  
+  <select id="countryDropdown"></select>
+  
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: 'https://restcountries.com/v3.1/all',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          
+          var countries = response; 
+        
+          var select = $('#countryDropdown');
+      
+          
+          countries.forEach(function(country) {
+            
+            var option = $('<option>').text(country.name.common);
+      
+          
+            select.append(option);
+          
+        },
+        error: function(xhr, status, error) {
+         
+          console.log('Error:', error);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

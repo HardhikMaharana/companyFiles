@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ <style>
+  table, th, tbody, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  tr, td {
+    height: 100%;
+  }
+  th {
+    padding: 10px;
+  }
+  input {
+    padding: 15px;
+  }
+ </style>
+</head>
+<body>
+ <div class="slide" id="slide-3">
+  <h2 style="text-decoration: underline;">Qualification Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Board</th>
+        <th>University/School</th>
+        <th>Total Mark</th>
+        <th>Marks Secured</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" name="board[]" class="board" required></td>
+        <td><input type="text" name="university-school[]" class="university-school" required></td>
+        <td><input type="number" name="total-mark[]" class="total-mark" required></td>
+        <td><input type="number" name="marks-secured[]" class="marks-secured" required></td>
+        <td><input type="number" name="percentage[]" class="percentage" disabled></td>
+
+      </tr>
+      <tr>
+        <td><input type="text" name="board[]" class="board" required></td>
+        <td><input type="text" name="university-school[]" class="university-school" required></td>
+        <td><input type="number" name="total-mark[]" class="total-mark" required></td>
+        <td><input type="number" name="marks-secured[]" class="marks-secured" required></td>
+        <td><input type="number" name="percentage[]" class="percentage" disabled></td>
+
+      </tr>
+      <tr>
+        <td><input type="text" name="board[]" class="board" required></td>
+        <td><input type="text" name="university-school[]" class="university-school" required></td>
+        <td><input type="number" name="total-mark[]" class="total-mark" required></td>
+        <td><input type="number" name="marks-secured[]" class="marks-secured" required></td>
+        <td><input type="number" name="percentage[]" class="percentage" disabled></td>
+
+      </tr>
+      <tr>
+        <td><input type="text" name="board[]" class="board" required></td>
+        <td><input type="text" name="university-school[]" class="university-school" required></td>
+        <td><input type="number" name="total-mark[]" class="total-mark" required></td>
+        <td><input type="number" name="marks-secured[]" class="marks-secured" required></td>
+        <td><input type="number" name="percentage[]" class="percentage" disabled></td>
+
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" id="prev-slide-3">Previous</button>
+  <button type="button" id="next-slide-3">Next</button>
+  <button type="button" id="add-row">Add New Row</button>
+ </div>
+ <script>
+  // Add new row to table on step 3
+  $("#add-row").click(function() {
+    var newRow = "<tr><td><input type='text' name='board[]'></td><td><input type='text' name='university-school[]'></td><td><input type='number' name='total-mark[]' class='total-mark' required></td><td><input type='number' name='marks-secured[]' class='marks-secured' required></td><td><input type='number' name='percentage[]' class='percentage' disabled></td><td><button type='button' class='delete-row'>Delete</button></td></tr>";
+    $("table tbody").append(newRow);
+  });
+
+  // Delete row from table on step 3
+  $(document).on("click", ".delete-row", function() {
+    $(this).closest("tr").remove();
+  });
+
+  // Calculate percentage for every row
+  $(document).on("input", ".total-mark, .marks-secured", function() {
+    
+    var totalMark = $row.find(".total-mark").val();
+    var marksSecured = $row.find(".marks-secured").val();
+   
+
+   if(totalMark && marksSecured){
+    var $row = $(this).closest("tr");
+    var percentage = (marksSecured / totalMark) * 100;
+   $(this).closest("tr").val(percentage.toFixed(2));
+   }
+   else{
+    $row.find(".percentage").val("")
+   }
+  });
+
+  $(document).ready(function(){
+
+    $("#next-slide-3").click(function(){
+      var boardval = $(".board").val();
+      var universityval = $(".university-school").val();
+      var totalmarkval = $(".total-mark").val();
+      var marksecuredval = $(".marks-secured").val();
+      var percentage= parseFloat((marksecuredval/totalmarkval)*100);
+
+      if($.trim(boardval) == "" || $.isNumeric(boardval)){
+        $(".board").val("");
+        console.log("error boardval");
+        console.log(boardval);
+      }
+      if($.trim(universityval) == "" || $.isNumeric(universityval)){
+        $(".university-school").val("");
+        $(".university-school").attr("placeholder","univercity name cant be number").style("color:","red");
+        console.log("error university");
+      }
+      if($.trim(totalmarkval) == ""){
+        console.log("total mark error");
+      }
+      else{
+        if($.trim(marksecuredval) == ""){
+          console.log("error marks secured");
+        }
+        else{
+          var percentage = parseFloat((marksecuredval/totalmarkval)*100);
+          $(".percentage").val(percentage.toFixed(2));
+          console.log(percentage);
+        }
+      }
+    });
+  });
+
+ </script>
+</body>
+</html>
