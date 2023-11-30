@@ -1,0 +1,25 @@
+﻿@model ManagementWebApp.Models.EventModels
+@{
+    ViewBag.Title = "EditEvent";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+<h2>EditEvent</h2>
+
+<div>
+    <form method="post" action="@Url.Action("Setevents","Admin")" enctype="multipart/form-data">
+        @Html.HiddenFor(model => model.id)
+        @Html.EditorFor(model => model.EventName)
+        @Html.EditorFor(model => model.EventType)
+        @Html.EditorFor(model => model.CasteName)
+        @Html.EditorFor(model => model.Date)
+        @Html.EditorFor(model => model.Description)
+        @Html.EditorFor(model => model.Duration)
+        @Html.EditorFor(model => model.Language)
+        <input type="file" name="imageFile" />
+        <button id="savebtn" class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+   
+
+</div>
+

@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "EditAdminDetailsview";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+@model ManagementWebApp.Models.Admindetails
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<style>
+    input[type=text] {
+        pointer-events: none;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        text-align:center;
+    }
+
+    label {
+        margin-top: 15px;
+        font-size: 13px;
+    }
+
+    form {
+        text-align: left;
+    }
+
+    .profcontainer {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .prophile {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        height: 100%;
+        justify-content: space-evenly;
+        border: 1.5px solid black;
+    }
+
+    .profimg-div {
+        width: 100%;
+        height: 30%;
+        text-align: center;
+    }
+
+    .proftext {
+        width: 100%;
+        height: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .profimg {
+        width: 230px;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: rgb(0, 254, 254, 0.64) 5px 5px;
+    }
+    .edit{
+        width:100px;
+    }
+    .add, .imgFile {
+        display: none;
+    }
+    ul li{
+        display:inline;
+        list-style-type:none;
+    }
+    
+    
+ 
+    
+    
+</style>
+<div class="profcontainer">
+    <div class="prophile">
+        <div class="profimg-div">
+            <img class="profimg" src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+        </div>
+        <div class="proftext">
+            <form method="post" action="@Url.Action("EditAdminDetails","Admin")" enctype="multipart/form-data">
+                
+                @Html.HiddenFor(e=>e.id)
+                    <input type="file" class="imgFile" name="imgFile"  />
+                
+
+                <ul>
+                    <li>
+                        <label>Name</label>
+                    </li>
+                    <li>
+                        @Html.EditorFor(e => e.AdminName, new { @PlaceHolder = "AdminName" })
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <label>MAil Id</label>
+                    </li>
+                    <li>
+                        @Html.EditorFor(e => e.MailId, new { @PlaceHolder = "Mail Id" })
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <label>Phone No</label>
+                    </li>
+                    <li>
+                        @Html.EditorFor(e => e.PhoneNo, new { @PlaceHolder = "Phone No" })
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <label>Password</label>
+                    </li>
+                    <li>
+                        @Html.EditorFor(e => e.Password, new { @PlaceHolder = "Password" })
+                    </li>
+                </ul>
+
+          <button type="submit" class="btn-sm btn-danger add">Add</button>
+            </form>
+            <button class="btn-sm btn-primary edit">Edit</button>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+        $(".edit").click(() => {
+            $("input[type='text']").css("pointer-events", "all");
+            $("input[type='text']   ").css("border-bottom", "2px solid #fc5087");
+            $(".add").show();
+            $(".imgFile").show();
+        })
+
+    })
+
+</script>

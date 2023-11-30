@@ -1,0 +1,120 @@
+﻿@model IEnumerable<ManagementWebApp.Models.movieBookingModels>
+
+@{
+    ViewBag.Title = "showBookingDetails";
+    Layout = "~/Views/Shared/_LayoutAfterUserLogin.cshtml";
+
+    var seats = "";
+    foreach(var i in Model)
+    {
+        seats =seats+","+i.SeatsNumber;
+    }
+}
+<style>
+    .bookeddatacard{
+        width:23%;
+    }
+    .bookeddatacard p{
+    
+        font-size:15px;
+    }
+        .bookeddatacard h5 {
+            font-size:25px
+        }
+        .bookeddatacard h3 {
+            font-size: 30px
+        }
+    .booking_details_container{
+        width:100%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        flex-wrap:wrap;
+        margin-top:30px;
+    }
+    .bookeddatacardcontainer {
+        width: 24%;
+        box-shadow: 1px 1px 2px 1px grey;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        height:auto;
+    }
+    .bookeddatacard {
+        width: 100%;
+        height:100%;
+        display: flex;
+    }
+    .bookeddatacard p{
+        font-size:12px;
+    }
+    .cancelbtn {
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border: none;
+       
+        border-radius: 5px;
+    }
+
+</style>
+
+<h2 style="text-align:center">Your Bookings</h2>
+
+
+     
+<div class="booking_details_container">
+    <p class="seat" hidden>@seats</p>
+    @foreach (var item in Model)
+    {
+        <div class="bookeddatacardcontainer">
+            <div class="bookeddatacard">
+                <div style="width:85%;">
+
+                    <p class="seatsno" hidden>@item.SeatNumber</p>
+
+
+                    <p class="propid" hidden>@item.propertyId</p>
+                    <p>Booking Id: @item.Bookingid</p>
+                    <h3> @item.BookingEventName</h3>
+                    <p> @item.BookingPropertyName : @item.Location : @item.PropertyAddress</p>
+                    <p> @item.DateTime : @item.Time</p>
+                    <p>Seat Number: </p>
+                    <h5 class="numberofseats"> @item.SeatsNumber</h5>
+                </div>
+                <div style="width: 14%; background-color: #fc5087;padding:1%;border-left:dashed">
+                    <h3><b>@item.NumberOfSeats</b></h3>
+                    <p>Seats</p>
+                </div>
+
+            </div>
+           <a href="@Url.Action("CancelBooking","WebpageHome", new {@id=item.Bookingid})"><button class="cancelbtn" id="@item.Bookingid">Cancel</button></a> 
+        </div>
+
+    }
+</div>    
+
+<script>
+    $(document).ready(function () {
+        let seatsno = $(".numberofseats").text();
+        let seatsarr = seatsno.split(",");
+        let seats = $(".seatsno").text();
+        let seatarr = seats.split(",");
+        console.log(seatarr)
+        $(".cancelbtn").click(function () {
+            for (let i = 0; i < seatsarr.length; i++) {
+                for (let j = 0; j < seatarr.length; j++)
+                    if (seatsarr[i] == seatarr[j]) {
+                        seatarr.pop(seatarr[j], 1)
+                }
+            }
+
+            console.log(seatarr)
+            console.log($(this).closest($(".numberofseats").html()))
+            $(this).closest(".bookeddatacardcontainer").remove();
+        })
+    });
+</script>
+
+
+
